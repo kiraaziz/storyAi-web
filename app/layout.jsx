@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="h-screen relative  ">
         <Toaster />
-        <div className="back absolute top-0 right-0 h-full w-full -z-50" />
+        <div className="back fixed top-0 right-0 h-full w-full -z-50" />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
