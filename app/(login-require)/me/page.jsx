@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import Loading from '@/components/root/Loading'
 
 
-function page() {
+function Page() {
 
     const [postList, setPostList] = useState([])
     const [loadingState, setLoadingState] = useState(true)
@@ -118,8 +118,8 @@ function page() {
                             </Button>
                         </Link>
                     </div>
-                        : postList.map((v) => (
-                            <div className='px-5 pb-5 mx-auto max-w-3xl w-full '>
+                        : postList.map((v, index) => (
+                            <div key={index} className='px-5 pb-5 mx-auto max-w-3xl w-full '>
                                 <div className='w-full flex  gap-3 lg:flex-row flex-col'>
                                     <div className='h-48 w-48 bg-white rounded shadow-md'>
                                     </div>
@@ -149,4 +149,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

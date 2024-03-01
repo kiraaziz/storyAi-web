@@ -7,29 +7,33 @@ import Login from '@/components/root/Login';
 import { useLogin } from '@/hooks/useLogin';
 import { userProfile } from "@/hooks/user"
 
-const useFirebaseUser = ({ children }) => {
-    const [user, loading, error] = useAuthState(auth)
-    const [registerLoad, setRegisterLoad] = useState(false)
+const Layout = ({ children }) => {
+    const [user, loading, error] = useAuthState(auth);
+    const [registerLoad, setRegisterLoad] = useState(false);
 
-    const { setProfile } = userProfile()
+    const { setProfile } = userProfile();
+
+    // Move useLogin hook outside of fetchUserData
+    const fromFire = useLogin(user);
+
+    const fetchUserData = async () => {
+        if (user) {
+            setProfile(fromFire);
+        }
+    };
 
     useEffect(() => {
-        setRegisterLoad(true)
-        const fetchUserData = async () => {
-            if (user) {
+        const fetchData = async () => {
+            setRegisterLoad(true);
+            await fetchUserData();
+            setRegisterLoad(false);
+        };
 
-                const fromFire = await useLogin(user)
-                setProfile(fromFire)
-            }
-        }
-
-        fetchUserData()
-        setRegisterLoad(false)
-    }, [user])
-
+        fetchData();
+    }, [user]);
 
     if (loading || registerLoad) {
-        return <Loading />
+        return <Loading />;
     }
 
     if (error) {
@@ -37,10 +41,10 @@ const useFirebaseUser = ({ children }) => {
     }
 
     if (!user) {
-        return <Login />
+        return <Login />;
     }
 
-    return children
-}
+    return children;
+};
 
-export default useFirebaseUser
+export default Layout;

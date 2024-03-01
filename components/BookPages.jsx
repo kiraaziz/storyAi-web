@@ -12,7 +12,7 @@ function BookPages({ data }) {
     return (
         <>
             {pages.map((p, i) => (
-                <div className="w-full">
+                <div key={i} className="w-full">
                     <div className=" border p-5 flex flex-col  backdrop-blur-sm gap-4 justify-between ">
                         <h1 className="text-primary font-bold text-xl tracking-wide">{p.script}</h1>
                         <div onClick={() => load(i)} className="h-60 w-full flex items-center justify-center rounded shadow mb-5">

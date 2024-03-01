@@ -13,7 +13,7 @@ import { firestore } from "@/lib/firebase/connection"
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
-function page() {
+function Page() {
 
     const { profile } = userProfile()
 
@@ -159,4 +159,4 @@ function page() {
     )
 }
 
-export default page
+export default Page
