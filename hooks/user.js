@@ -1,8 +1,6 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
-const useUserStore = create((set) => ({
-    user: null,
-    setUser: (userData) => set({ user: userData }),
+export const userProfile = create((set) => ({
+    profile: null,
+    setProfile: (newProfile) => set({ profile: newProfile }),
 }));
-
-export { useUserStore }

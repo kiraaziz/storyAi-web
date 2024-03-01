@@ -4,9 +4,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-.back{
+.back {
   background-image: url(/back.svg);
-  background-size: 100%;
+  background-size: 250%;
+  background-position: top;
 
 }
 
@@ -18,7 +19,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 346.8 77.2% 49.8%;
+    --primary: 221 78% 55%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -63,4 +64,33 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px !important;
+  /* adjust as needed */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  /* set to desired background color for the scrollbar holder */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #747474;
+  /* set to desired gradient for the scrollbar thumb */
+  border-radius: 6px;
+  /* adjust as needed */
+}
+
+.firebase-emulator-warning {
+  display: none !important;
+}
+
+.loginLayout {
+  background-position: center;
+  background-image: url(https://miro.medium.com/v2/resize:fit:1024/1*rVoKA4hs-u8ulIkonngcFw.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
