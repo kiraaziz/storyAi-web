@@ -13,7 +13,7 @@ function Navbar() {
     const [user, loading, error] = useAuthState(auth)
 
     return (
-        <div className="h-[14svh] py-5 backdrop-blur-xl sticky top-0 border-b px-5 lg:px-0">
+        <div className="h-[14svh] py-5 backdrop-blur-xl sticky top-0 border-b px-5 lg:px-0 z-50">
             <div className="h-full w-full flex items-center justify-between max-w-6xl mx-auto">
                 <h1 className="flex gap-3 text-primary font-bold text-lg">
                     <Scroll />

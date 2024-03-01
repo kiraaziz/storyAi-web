@@ -37,15 +37,19 @@ const options = (about) => {
 
 const endpoint = "https://api.fireworks.ai/inference/v1/chat/completions"
 
-export async function GET() {
+export const POST = async (req) => {
+
+    const body = await req.json()
 
     const story = {
-        for: "5 years old kid",
-        about: "school",
-        count: "5"
+        about: body.about,
+        count: body.count,
+        genre: body.selectedGenres.length > 0 && `with this genres ${body.selectedGenres.join(" , ")}`
     }
 
-    const reqData = await fetch(endpoint, options(`Compose a charming story for ${story.for} centered ${story.about} friendship, encompassing ${story.count} scenes that align with the provided TypeScript interface "StoryRequest." Maintain a strict adherence to the JSON data format in your response. 
+    console.log(`Compose a story centered about ${story.about} , encompassing ${story.count} scenes ${story.genre} that align with the provided TypeScript interface "StoryRequest." Maintain a strict adherence to the JSON data format in your response.`)
+
+    const reqData = await fetch(endpoint, options(`Compose a story centered about ${story.about} , encompassing ${story.count} scenes ${story.genre} that align with the provided TypeScript interface "StoryRequest." Maintain a strict adherence to the JSON data format in your response. 
     interface StoryRequest {
       // Overall topic of the story
       topic: string;
@@ -75,7 +79,8 @@ export async function GET() {
       };
     }`))
     const data = await reqData.text()
-    const res = await data.split("data: ").map((val) => {
+
+    const res = data.split("data: ").map((val) => {
         try {
             return JSON.parse(val)
         } catch (e) {
